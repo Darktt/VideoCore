@@ -242,7 +242,7 @@ namespace videocore { namespace simpleApi {
 {
     _aspectMode = aspectMode;
     switch (aspectMode) {
-        case VCAscpectModeFill:
+        case VCAspectModeFill:
             m_aspectMode = videocore::AspectTransform::AspectMode::kAspectFill;
             break;
         case VCAspectModeFit:
