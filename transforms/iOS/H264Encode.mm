@@ -77,6 +77,8 @@ namespace videocore { namespace iOS {
             
             NSDictionary* settings = nil;
             
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wtautological-compare"
             if(&AVVideoAllowFrameReorderingKey != nullptr) {
                 settings = @{AVVideoCodecKey: AVVideoCodecH264,
                              AVVideoCompressionPropertiesKey: @{AVVideoAverageBitRateKey: @(m_bitrate),
@@ -97,6 +99,7 @@ namespace videocore { namespace iOS {
                              AVVideoHeightKey: @(m_frameH)
                              };
             }
+#pragma clang diagnostic pop
             AVAssetWriterInput* input = [AVAssetWriterInput assetWriterInputWithMediaType:AVMediaTypeVideo outputSettings:settings];
             input.expectsMediaDataInRealTime = YES;
             

@@ -56,7 +56,7 @@ typedef NS_ENUM(NSInteger, VCCameraState)
 typedef NS_ENUM(NSInteger, VCAspectMode)
 {
     VCAspectModeFit,
-    VCAscpectModeFill
+    VCAspectModeFill
 };
 
 //With new filters should add an enum here

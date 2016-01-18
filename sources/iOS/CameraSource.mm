@@ -145,6 +145,9 @@ namespace videocore { namespace iOS {
                     
                     output.videoSettings = @{(NSString*)kCVPixelBufferPixelFormatTypeKey: @(kCVPixelFormatType_32BGRA) };
                     
+                    // Remove deprecated message.
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
                     if(!SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
                         AVCaptureConnection* conn = [output connectionWithMediaType:AVMediaTypeVideo];
                         if([conn isVideoMinFrameDurationSupported]) {
@@ -154,6 +157,8 @@ namespace videocore { namespace iOS {
                             [conn setVideoMaxFrameDuration:CMTimeMake(1, fps)];
                         }
                     }
+#pragma clang diagnostic pop
+                    
                     if(!bThis->m_callbackSession) {
                         bThis->m_callbackSession = [[sbCallback alloc] init];
                         [((sbCallback*)bThis->m_callbackSession) setSource:shared_from_this()];
